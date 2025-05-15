@@ -1,0 +1,323 @@
+/* formulario.css */
+
+/* Estilos base para el cuerpo del popup */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: #2c2c2e;
+    color: #e0e0e0;
+    width: 290px;
+    min-height: 100px;
+    overflow-x: hidden;
+
+}
+
+.options-container {
+    padding: 14px 18px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2c2c2e;
+    border-radius: 6px;
+}
+
+h1 {
+    text-align: left;
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+/* Estilos para los títulos de sección (URLs, Voz, WhatsApp, General) */
+h2 {
+    text-align: left;
+    color: #ffffff;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 500;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #4a4a4c;
+}
+
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+/* Estilos genéricos para etiquetas */
+.form-group label {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #b0b0b0;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Estilo específico para etiquetas que sí deben ser bloques (ej: títulos de grupos de radio) */
+.form-group label.block-label {
+     display: block;
+     margin-right: 0;
+}
+
+
+/* Estilo común para inputs de texto y textarea */
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px 9px;
+    border-radius: 5px;
+    border: 1px solid #4a4a4c;
+    background-color: #3a3a3c;
+    color: #f0f0f0;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group textarea::placeholder {
+    color: #8e8e93;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007aff;
+    box-shadow: 0 0 0 1.5px rgba(0, 122, 255, 0.25);
+}
+
+/* Específico para el textarea */
+.form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 120px;
+    line-height: 1.4;
+}
+
+/* Estilos para las descripciones debajo de los campos */
+.form-group .description {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 0.8em;
+    color: #909092;
+    line-height: 1.4;
+    margin-left: 0;
+}
+
+
+/* Estilos específicos para elementos dentro de un grupo de radio (api-selection) */
+.api-selection .radio-group label.block-label {
+    display: block;
+    margin-bottom: 6px;
+    vertical-align: top;
+    margin-right: 0;
+}
+.api-selection .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 0;
+}
+
+.api-selection .radio-group div {
+    display: flex;
+    align-items: center;
+}
+
+.api-selection input[type="radio"] {
+    margin-right: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #8e8e93;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.api-selection input[type="radio"]:checked {
+    border-color: #007aff;
+}
+
+.api-selection input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #007aff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.api-selection .radio-label {
+    display: inline-block;
+    font-size: 0.9em;
+    color: #d0d0d0;
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 0;
+}
+
+/* Contenedor principal del switch en el formulario de Voz para boton flotante de DialPad */
+.ctcb-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 18px;
+    vertical-align: middle;
+    margin-left: 0;
+    margin-top: 0; margin-bottom: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    flex-shrink: 0;
+}
+
+/* Oculta el input checkbox nativo */
+.ctcb-toggle-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* El control visual del slider (la parte deslizable) */
+.ctcb-toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .2s;
+    border-radius: 18px;
+}
+
+/* El "pulgar" o círculo del switch */
+.ctcb-toggle-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .2s;
+    border-radius: 50%;
+}
+
+/* Estado "checked" (encendido) */
+/* Fondo del slider cuando está encendido */
+.ctcb-toggle-switch input[type="checkbox"]:checked + .slider {
+    background-color: #228ea8;
+}
+
+/* Sombra al enfocar el input (accesibilidad) */
+.ctcb-toggle-switch input[type="checkbox"]:focus + .slider {
+    box-shadow: 0 0 1px #34c759;
+}
+
+/* Mueve el círculo cuando está encendido */
+.ctcb-toggle-switch input[type="checkbox"]:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+/* Estilos para el menú principal */
+#main-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+#main-menu:not(.visible) {
+    display: none;
+}
+
+
+.menu-item {
+    background-color: #3a3a3c;
+    color: #f0f0f0;
+    border: 1px solid #4a4a4c;
+    padding: 12px 14px;
+    border-radius: 5px;
+    font-size: 1.05em;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.menu-item:hover {
+    background-color: #4a4a4c;
+    border-color: #5a5a5c;
+}
+
+/* Estilos para ocultar/mostrar secciones y área de estado */
+.config-section, #save-status-area {
+    display: none;
+}
+
+.config-section.visible, #save-status-area.visible {
+    display: block;
+}
+
+
+/* Estilos para el contenedor de acciones (botón Update) */
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+#updateButton {
+    background-color: #4e4e50;
+    color: #ffffff;
+    border: 1px solid #5a5a5c;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    min-width: 70px;
+}
+
+#updateButton:hover {
+    background-color: #5f5f61;
+    border-color: #6a6a6c;
+}
+
+#updateButton:active {
+    background-color: #3e3e40;
+}
+
+/* Estilos para mensajes de estado (éxito/error) */
+#statusMessage {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.9em;
+    min-height: 1em;
+    font-weight: 500;
+}
+.success {
+    color: #34c759;
+}
+.error {
+    color: #ff3b30;
+}

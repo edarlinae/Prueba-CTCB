@@ -1,0 +1,734 @@
+/* Superposición de la Modal de Opciones */
+#ctcb-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2147483640;
+    animation: ctcb-modal-appear 0.2s ease-out;
+}
+
+/* Contenido de la Modal de Opciones */
+#ctcb-modal-content {
+    background-color: #fff;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    color: #333;
+}
+
+@keyframes ctcb-modal-appear {
+    from {
+        transform: translateY(10px) scale(0.98);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+#ctcb-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#ctcb-modal-header span {
+    font-size: 1.05em;
+    font-weight: 500;
+    color: #333;
+}
+
+#ctcb-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.7em;
+    font-weight: normal;
+    color: #999;
+    cursor: pointer;
+    padding: 0 3px;
+    line-height: 1;
+}
+#ctcb-modal-close:hover {
+    color: #555;
+}
+
+#ctcb-modal-body {
+    padding: 18px;
+}
+
+.ctcb-modal-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+.ctcb-modal-description strong {
+    color: #333;
+    font-weight: 500;
+}
+
+.ctcb-action-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    background-color: #f7f7f7;
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.ctcb-action-button:hover {
+    background-color: #f0f0f0;
+    border-color: #e0e0e0;
+}
+.ctcb-action-button:last-child {
+    margin-bottom: 0;
+}
+.ctcb-action-button img {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    opacity: 0.75;
+}
+
+#ctcb-modal-open-dialpad img {
+    width: 30px;
+    height: 30px;
+}
+
+
+.ctcb-action-button div {
+    display: flex;
+    flex-direction: column;
+}
+.ctcb-action-button strong {
+    font-size: 0.95em;
+    color: #333;
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+.ctcb-action-button span {
+    font-size: 0.8em;
+    color: #777;
+}
+
+/* Clase para el icono azul inline junto al número de teléfono en la página */
+.ctcb-phone-icon-inline {
+    width: 24px !important;
+    height: 24px !important;
+    vertical-align: middle !important;
+    margin-right: 6px !important;
+    margin-left: 0px !important;
+    cursor: pointer !important;
+    opacity: 0.9 !important;
+    transition: opacity 0.15s ease-in-out;
+}
+.ctcb-phone-icon-inline:hover {
+    opacity: 1 !important;
+}
+.ctcb-phone-container {
+    display: inline-flex;
+    align-items: center;
+}
+.ctcb-phone-container a {
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: default !important;
+}
+
+/* DIALPAD DE MARCACIÓN (BLANCO) */
+#ctcb-dialpad-container {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 230px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    z-index: 2147483635;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #374151;
+    animation: ctcb-dialpad-slidein 0.2s ease-out;
+    box-sizing: border-box;
+}
+#ctcb-dialpad-container *,
+#ctcb-dialpad-container *::before,
+#ctcb-dialpad-container *::after {
+    box-sizing: border-box;
+}
+@keyframes ctcb-dialpad-slidein {
+    from {
+        transform: translateY(20px);
+        opacity: 0.3;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+#ctcb-dialpad-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: transparent;
+    flex-shrink: 0;
+    position: relative;
+}
+#ctcb-dialpad-display {
+    flex-grow: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 7px 38px 7px 10px;
+    font-size: 1.1em;
+    line-height: 1.3;
+    color: #1f2937;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    min-width: 0;
+    height: auto;
+}
+#ctcb-dialpad-display::placeholder {
+    color: #9ca3af;
+}
+#ctcb-dialpad-backspace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    color: #6b7280;
+    cursor: pointer;
+    margin-left: -34px;
+    margin-right: 8px;
+    transition: background-color 0.15s ease;
+    padding:0;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+#ctcb-dialpad-backspace:hover {
+    background-color: #e9e9e9;
+}
+#ctcb-dialpad-backspace img {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+#ctcb-dialpad-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1.6em;
+    font-weight: normal;
+    line-height: 1;
+    cursor: pointer;
+    padding:0;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+    z-index: 1;
+    margin-left: 0;
+}
+#ctcb-dialpad-close:hover {
+    color: #4b5563;
+}
+#ctcb-dialpad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 10px 12px;
+    flex-shrink: 0;
+    background-color: transparent;
+}
+.ctcb-dialpad-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #1f2937;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    padding: 12px 0;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+.ctcb-dialpad-button:hover {
+    background-color: #f0f2f5;
+}
+.ctcb-dialpad-button:active {
+    background-color: #e5e7eb;
+}
+#ctcb-dialpad-actions {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0 10px 0;
+    flex-shrink: 0;
+    background-color: transparent;
+}
+#ctcb-dialpad-callbutton {
+    display: flex;
+    height: 56px;
+    width: 56px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: transform 0.1s ease-in-out;
+    border: none;
+    outline: none;
+    padding: 0;
+}
+#ctcb-dialpad-callbutton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+#ctcb-dialpad-callbutton:active {
+    transform: scale(0.95);
+}
+#ctcb-dialpad-callbutton img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+
+/*Estilos para la UI "En Llamada" (azul)*/
+#ctcb-in-call-ui-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    width: 220px;
+
+    background-image: radial-gradient(circle at 20% 85%, #a09bf5 0%, #86a1f5 45%, #f5f7fa 80%);
+    background-color: #f5f7fa;
+
+    color: #333;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    z-index: 2147483646;
+    padding: 15px 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: ctcb-incall-appear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+@keyframes ctcb-incall-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+#ctcb-in-call-ui-container * {
+    box-sizing: border-box;
+}
+.ctcb-in-call-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 8px;
+    min-height: auto;
+    font-size: 0.8em;
+    opacity: 0.9;
+    color: #555;
+    font-weight: 500;
+    width: 100%;
+}
+
+#ctcb-in-call-ui-container .ctcb-in-call-timer {
+     font-variant-numeric: tabular-nums;
+     margin: 0;
+     padding: 0;
+     text-align: center;
+     display: block;
+}
+
+.ctcb-in-call-info {
+    padding: 0;
+    margin-bottom: 18px;
+    width: 100%;
+    text-align: center;
+}
+#ctcb-in-call-ui-container #ctcb-in-call-number {
+     display: block;
+     font-size: 1.5em;
+     font-weight: 600;
+     margin-bottom: 3px;
+     letter-spacing: 0.2px;
+     color: #1a1a1a;
+}
+#ctcb-in-call-ui-container #ctcb-in-call-status {
+     display: block;
+     font-size: 0.85em;
+     opacity: 0.85;
+     color: #666;
+     font-weight: 400;
+     margin-top: 0;
+     margin-bottom: 0;
+}
+
+.ctcb-in-call-controls {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 15px 10px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ctcb-in-call-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.ctcb-in-call-button {
+    background: none;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 0;
+    opacity: 0.9;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+}
+.ctcb-in-call-button:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+.ctcb-in-call-button:active {
+     transform: translateY(0);
+     opacity: 0.8;
+}
+#ctcb-in-call-ui-container .ctcb-in-call-button img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 4px;
+    filter: none;
+    opacity: 0.85;
+}
+#ctcb-in-call-ui-container .ctcb-in-call-button:hover img {
+     opacity: 1;
+}
+
+#ctcb-in-call-ui-container .ctcb-icon-label {
+    font-size: 0.65em;
+    text-transform: none;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Botón de Colgar */
+#ctcb-in-call-ui-container #ctcb-in-call-hangup-button.ctcb-hangup-btn {
+    background: none;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+#ctcb-in-call-ui-container #ctcb-in-call-hangup-button.ctcb-hangup-btn:hover {
+    background: none;
+    transform: scale(1.08);
+    box-shadow: none;
+}
+#ctcb-in-call-ui-container #ctcb-in-call-hangup-button.ctcb-hangup-btn:active {
+    background: none;
+    transform: scale(0.95);
+    box-shadow: none;
+}
+#ctcb-in-call-ui-container #ctcb-in-call-hangup-button.ctcb-hangup-btn img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    filter: none;
+    box-shadow: none;
+    filter: none;
+}
+
+
+/* COMPOSITOR DE WHATSAPP (Ventana de envío de mensajes) */
+#ctcb-whatsapp-composer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2147483647;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    animation: ctcb-modal-appear 0.2s ease-out;
+}
+#ctcb-whatsapp-composer-content {
+    background-color: #f8f9fa;
+    border-radius: 0px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+#ctcb-whatsapp-composer-header {
+    background-color: #4B5563;
+    color: #ffffff;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #3a4350;
+}
+#ctcb-whatsapp-composer-header span {
+    font-size: 1.05em;
+    font-weight: 500;
+}
+.ctcb-wc-button-close {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.6em;
+    font-weight: normal;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 0 5px;
+    line-height: 1;
+}
+.ctcb-wc-button-close:hover {
+    opacity: 1;
+    color: #ffffff;
+}
+#ctcb-whatsapp-composer-body {
+    padding: 20px 25px;
+    color: #333;
+    background-color: #ffffff;
+}
+#ctcb-wc-contact-identifier {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+#ctcb-whatsapp-composer-body .ctcb-form-group {
+    margin-bottom: 15px;
+}
+#ctcb-whatsapp-composer-body .ctcb-form-group label {
+    display: block;
+    font-size: 0.85em;
+    color: #495057;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+#ctcb-whatsapp-composer-body input[type="text"],
+#ctcb-whatsapp-composer-body textarea#ctcb-wc-message-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #495057;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+}
+#ctcb-whatsapp-composer-body input[type="text"]:read-only {
+    background-color: #e9ecef;
+    cursor: default;
+}
+#ctcb-whatsapp-composer-body input[type="text"]:focus,
+#ctcb-whatsapp-composer-body textarea#ctcb-wc-message-input:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+#ctcb-whatsapp-composer-body textarea#ctcb-wc-message-input {
+    resize: vertical;
+    min-height: 80px;
+    max-height: 150px;
+}
+.ctcb-file-input-area {
+    margin-top: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+.ctcb-file-input-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: normal;
+    border: 1px solid #6c757d;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    margin-right: 8px;
+}
+.ctcb-file-input-button:hover {
+    background-color: #5a6268;
+}
+#ctcb-wc-file-name-display {
+    font-size: 0.8em;
+    color: #6c757d;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    min-width: 0;
+}
+#ctcb-whatsapp-composer-footer {
+    padding: 12px 25px;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #dee2e6;
+}
+#ctcb-whatsapp-composer-footer button {
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid;
+    transition: background-color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+}
+.ctcb-wc-button-cancel {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-color: #dc3545;
+}
+.ctcb-wc-button-cancel:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.ctcb-wc-button-send {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+}
+.ctcb-wc-button-send:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* Estilos para el mensaje de estado en el compositor de WhatsApp */
+#ctcb-whatsapp-composer-footer #ctcb-wc-status-message {
+    flex-grow: 1;
+    text-align: left;
+    margin: 0 10px 0 0;
+    font-size: 0.85em;
+    min-height: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+#ctcb-whatsapp-composer-footer #ctcb-wc-status-message.success {
+    color: #28a745;
+    font-weight: 500;
+}
+
+#ctcb-whatsapp-composer-footer #ctcb-wc-status-message.error {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+
+/* BOTÓN FLOTANTE DIALPAD */
+#ctcb-open-dialpad-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2147483630;
+    background-color: #87CEFA;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+#ctcb-open-dialpad-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+#ctcb-open-dialpad-button img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    object-fit: contain;
+}

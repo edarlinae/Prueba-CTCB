@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Configuración</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 10px;
+            width: 180px;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+        }
+        button:hover {
+            background-color: #e9e9e9;
+        }
+        button:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="open-url-setup">URLs SETUP</button>
+    <button id="open-voice-setup">VOZ SETUP</button>
+    <button id="open-whatsapp-setup">WHATSAPP SETUP</button>
+
+    <script src="menu_popup.js"></script>
+</body>
+</html>

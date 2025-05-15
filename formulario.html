@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración API - ClickToCallBeta</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+    <div class="options-container">
+        <h1 id="mainTitle">Configuración</h1>
+        <div id="main-menu">
+            <button class="menu-item" data-section="urls-setup">URLs SETUP</button>
+            <button class="menu-item" data-section="voz-setup">VOZ SETUP</button>
+            <button class="menu-item" data-section="whatsapp-setup">WHATSAPP SETUP</button>
+             </div>
+
+        <form id="apiSettingsForm">
+            <div id="urls-setup-section" class="config-section hidden">
+                 <h2>URLs SETUP</h2>
+                 <div class="form-group">
+                    <label for="url_list">URL List (Páginas afectadas):</label>
+                    <p class="description">
+                        La extensión solo funcionará en estas URLs. Déjalo en blanco para que funcione en todos los sitios. Una URL por línea.
+                    </p>
+                    <textarea id="url_list" name="url_list" rows="3" placeholder="https://dominio1.com/ruta/*\nhttps://*.dominio2.com/*"></textarea>
+                </div>
+            </div>
+
+            <div id="voz-setup-section" class="config-section hidden">
+                <h2>VOZ SETUP</h2>
+                <div class="form-group">
+                    <label for="domain">Domain (para Llamadas):</label>
+                    <input type="text" id="domain" name="domain" placeholder="ej: micentralita.vozipcenter.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="id">ID (para Llamadas):</label>
+                    <input type="text" id="id" name="id" placeholder="ej: 12345">
+                </div>
+
+                <div class="form-group">
+                    <label for="token">Token (para Llamadas):</label>
+                    <input type="text" id="token" name="token" placeholder="Tu token de API de Voz">
+                </div>
+
+                <div class="form-group">
+                    <label for="user_id">User ID (para Llamadas API Voz):</label>
+                    <input type="text" id="user_id" name="user_id" placeholder="Tu ID de usuario para llamadas de voz">
+                </div>
+
+                <div class="form-group api-selection">
+                    <label>Tipo de API de Voz:</label>
+                    <div class="radio-group">
+                        <div>
+                            <input type="radio" id="api_vozipcenter" name="api_type" value="vozipcenter" checked>
+                            <label for="api_vozipcenter" class="radio-label">API vozipcenter (Voz)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="api_rm" name="api_type" value="rm">
+                            <label for="api_rm" class="radio-label">API RM (Voz)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="show_floating_button">Mostrar Botón Flotante de Dialpad:</label>
+
+                    <label class="ctcb-toggle-switch">
+                      <input type="checkbox" id="show_floating_button" name="show_floating_button">
+                      <span class="slider"></span>
+                    </label>
+
+                    <p class="description">
+                        Activa o desactiva el botón redondo de Dialpad que aparece en la esquina inferior derecha en las páginas web.
+                    </p>
+                 </div>
+                </div>
+
+            <div id="whatsapp-setup-section" class="config-section hidden">
+                 <h2>WHATSAPP SETUP</h2>
+                 <div class="form-group">
+                    <label for="whatsapp_domain">Domain (para API WhatsApp WAenvio):</label>
+                    <input type="text" id="whatsapp_domain" name="whatsapp_domain" placeholder="ej: premium.vozipcenter.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp_id">ID (para API WhatsApp WAenvio):</label>
+                    <input type="text" id="whatsapp_id" name="whatsapp_id" placeholder="ej: 4">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp_token">Token (para API WhatsApp WAenvio):</label>
+                    <input type="text" id="whatsapp_token" name="whatsapp_token" placeholder="Tu token de API WhatsApp">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp_origen">Número de Origen WhatsApp (API WAenvio):</label>
+                    <input type="text" id="whatsapp_origen" name="whatsapp_origen" placeholder="ej: 34600112233 (sin + ni espacios)">
+                    <p class="description">
+                        Tu número de WhatsApp registrado para usar la API WAenvio.
+                    </p>
+                </div>
+            </div>
+
+             <div id="save-status-area" class="hidden">
+                <div class="form-actions">
+                    <button type="submit" id="updateButton">Update</button>
+                </div>
+                <p id="statusMessage"></p>
+             </div>
+
+        </form>
+    </div>
+    <script src="formulario.js"></script>
+</body>
+</html>
