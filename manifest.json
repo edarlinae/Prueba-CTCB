@@ -1,9 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ClickToCallBeta",
-  "version": "0.4.8",
+  "name": "ClickToCall",
+  "version": "1.2.4",
   "description": "Identifica números de teléfono, permite llamar vía API y enviar WhatsApp.",
-  "Author": "Alicia Caparros",
   "icons": {
     "16": "icons/phone_icon16.png",
     "48": "icons/phone_icon48.png",

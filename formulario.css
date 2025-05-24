@@ -1,6 +1,4 @@
-/* formulario.css */
-
-/* Estilos base para el cuerpo del popup */
+/* Estilos base popup */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -9,7 +7,6 @@ body {
     width: 290px;
     min-height: 100px;
     overflow-x: hidden;
-
 }
 
 .options-container {
@@ -29,7 +26,7 @@ h1 {
     font-weight: 500;
 }
 
-/* Estilos para los títulos de sección (URLs, Voz, WhatsApp, General) */
+/* Títulos de sección formularios (URLs, Voz, WhatsApp, General) */
 h2 {
     text-align: left;
     color: #ffffff;
@@ -46,7 +43,7 @@ h2 {
     margin-bottom: 12px;
 }
 
-/* Estilos genéricos para etiquetas */
+/* Estilos etiquetas */
 .form-group label {
     display: inline-block;
     margin-bottom: 4px;
@@ -57,14 +54,13 @@ h2 {
     margin-right: 10px;
 }
 
-/* Estilo específico para etiquetas que sí deben ser bloques (ej: títulos de grupos de radio) */
 .form-group label.block-label {
      display: block;
      margin-right: 0;
 }
 
 
-/* Estilo común para inputs de texto y textarea */
+/* Estilo texto */
 .form-group input[type="text"],
 .form-group textarea {
     width: 100%;
@@ -91,7 +87,6 @@ h2 {
     box-shadow: 0 0 0 1.5px rgba(0, 122, 255, 0.25);
 }
 
-/* Específico para el textarea */
 .form-group textarea {
     resize: vertical;
     min-height: 60px;
@@ -109,8 +104,6 @@ h2 {
     margin-left: 0;
 }
 
-
-/* Estilos específicos para elementos dentro de un grupo de radio (api-selection) */
 .api-selection .radio-group label.block-label {
     display: block;
     margin-bottom: 6px;
@@ -172,7 +165,7 @@ h2 {
     margin-right: 0;
 }
 
-/* Contenedor principal del switch en el formulario de Voz para boton flotante de DialPad */
+/* Contenedor principal del switch para botón flotante de DialPad */
 .ctcb-toggle-switch {
     position: relative;
     display: inline-block;
@@ -188,7 +181,7 @@ h2 {
     flex-shrink: 0;
 }
 
-/* Oculta el input checkbox nativo */
+/* Oculta el input checkbox*/
 .ctcb-toggle-switch input[type="checkbox"] {
     opacity: 0;
     width: 0;
@@ -208,7 +201,7 @@ h2 {
     border-radius: 18px;
 }
 
-/* El "pulgar" o círculo del switch */
+/* El círculo del switch (blanco) */
 .ctcb-toggle-switch .slider:before {
     position: absolute;
     content: "";
@@ -221,15 +214,13 @@ h2 {
     border-radius: 50%;
 }
 
-/* Estado "checked" (encendido) */
-/* Fondo del slider cuando está encendido */
+/* Estado encendido (fondo azul siguiendo diseño extensión) */
 .ctcb-toggle-switch input[type="checkbox"]:checked + .slider {
-    background-color: #228ea8;
+    background-color: #87CEFA; 
 }
 
-/* Sombra al enfocar el input (accesibilidad) */
 .ctcb-toggle-switch input[type="checkbox"]:focus + .slider {
-    box-shadow: 0 0 1px #34c759;
+    box-shadow: 0 0 1px #87CEFA;
 }
 
 /* Mueve el círculo cuando está encendido */
@@ -262,6 +253,9 @@ h2 {
     transition: background-color 0.2s ease, border-color 0.2s ease;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .menu-item:hover {
@@ -269,7 +263,14 @@ h2 {
     border-color: #5a5a5c;
 }
 
-/* Estilos para ocultar/mostrar secciones y área de estado */
+.menu-item-with-switch {
+    
+}
+
+.menu-item:not(.menu-item-with-switch) .ctcb-toggle-switch {
+    display: none;
+}
+
 .config-section, #save-status-area {
     display: none;
 }
@@ -278,8 +279,6 @@ h2 {
     display: block;
 }
 
-
-/* Estilos para el contenedor de acciones (botón Update) */
 .form-actions {
     text-align: right;
     margin-top: 20px;

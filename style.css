@@ -1,4 +1,4 @@
-/* Superposición de la Modal de Opciones */
+/* Superposición de la Modal (ventana opcion WP o Voz) */
 #ctcb-modal-overlay {
     position: fixed;
     top: 0;
@@ -13,7 +13,7 @@
     animation: ctcb-modal-appear 0.2s ease-out;
 }
 
-/* Contenido de la Modal de Opciones */
+/* Contenido Modal */
 #ctcb-modal-content {
     background-color: #fff;
     padding: 0;
@@ -112,7 +112,6 @@
     height: 30px;
 }
 
-
 .ctcb-action-button div {
     display: flex;
     flex-direction: column;
@@ -128,7 +127,7 @@
     color: #777;
 }
 
-/* Clase para el icono azul inline junto al número de teléfono en la página */
+/* Icono azul que aparece al lado del número de teléfono de la página */
 .ctcb-phone-icon-inline {
     width: 24px !important;
     height: 24px !important;
@@ -152,7 +151,7 @@
     cursor: default !important;
 }
 
-/* DIALPAD DE MARCACIÓN (BLANCO) */
+/* DialPad generar llamada (BLANCO) */
 #ctcb-dialpad-container {
     position: fixed;
     right: 16px;
@@ -326,8 +325,7 @@
     object-fit: contain;
 }
 
-
-/*Estilos para la UI "En Llamada" (azul)*/
+/* DialPad durante llamada (AZUL) */
 #ctcb-in-call-ui-container {
     position: fixed;
     bottom: 16px;
@@ -471,7 +469,7 @@
     color: #555;
 }
 
-/* Botón de Colgar */
+/* Botón de Colgar (ROJO) */
 #ctcb-in-call-ui-container #ctcb-in-call-hangup-button.ctcb-hangup-btn {
     background: none;
     width: 56px;
@@ -508,7 +506,7 @@
 }
 
 
-/* COMPOSITOR DE WHATSAPP (Ventana de envío de mensajes) */
+/* COMPOSITOR DE WHATSAPP (Ventana de envío de mensajes y archivos de Whatsapp) */
 #ctcb-whatsapp-composer-overlay {
     position: fixed;
     top: 0;
@@ -524,15 +522,15 @@
     animation: ctcb-modal-appear 0.2s ease-out;
 }
 #ctcb-whatsapp-composer-content {
-    background-color: #f8f9fa;
-    border-radius: 0px;
+    background-color: #f8f9fa; 
+    border-radius: 8px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     width: 90%;
-    max-width: 520px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 1px solid #dee2e6;
+    border: 1px solid #ced4da; 
 }
 #ctcb-whatsapp-composer-header {
     background-color: #4B5563;
@@ -542,11 +540,10 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #3a4350;
-}
-#ctcb-whatsapp-composer-header span {
-    font-size: 1.05em;
+    font-size: 1.1em;
     font-weight: 500;
 }
+
 .ctcb-wc-button-close {
     background: none;
     border: none;
@@ -563,20 +560,23 @@
     color: #ffffff;
 }
 #ctcb-whatsapp-composer-body {
-    padding: 20px 25px;
+    padding: 20px 25px; 
     color: #333;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 #ctcb-wc-contact-identifier {
-    font-size: 1.2em;
+    font-size: 1.4em; 
     font-weight: 500;
     color: #333;
     text-align: center;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 5px; 
 }
 #ctcb-whatsapp-composer-body .ctcb-form-group {
-    margin-bottom: 15px;
+    margin-bottom: 0; 
 }
 #ctcb-whatsapp-composer-body .ctcb-form-group label {
     display: block;
@@ -612,44 +612,51 @@
     min-height: 80px;
     max-height: 150px;
 }
+
+/* Estilos para la nueva selección del archivo de whatsapp a envíar*/
 .ctcb-file-input-area {
-    margin-top: 8px;
-    margin-bottom: 12px;
-    display: flex;
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    display: flex; 
     align-items: center;
+    gap: 8px; 
+    flex-wrap: wrap;
 }
 .ctcb-file-input-button {
-    background-color: #6c757d;
-    color: white;
+    background-color: #e9ecef;
+    color: #495057;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-weight: normal;
-    border: 1px solid #6c757d;
-    transition: background-color 0.2s ease;
+    border: 1px solid #ced4da; 
+    transition: background-color 0.2s ease, border-color 0.2s ease;
     display: inline-block;
-    margin-right: 8px;
+    flex-shrink: 0;
 }
 .ctcb-file-input-button:hover {
-    background-color: #5a6268;
+    background-color: #dee2e6;
+    border-color: #c6c9cc;
 }
 #ctcb-wc-file-name-display {
-    font-size: 0.8em;
+    font-size: 0.85em;
     color: #6c757d;
     display: inline-block;
     vertical-align: middle;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-grow: 1;
+    flex-grow: 1; 
     min-width: 0;
 }
+
 #ctcb-whatsapp-composer-footer {
     padding: 12px 25px;
     background-color: #f0f2f5;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 10px;
     border-top: 1px solid #dee2e6;
 }
@@ -681,11 +688,11 @@
     border-color: #0062cc;
 }
 
-/* Estilos para el mensaje de estado en el compositor de WhatsApp */
+/* Mensaje de estado en el compositor (ventana de envío de mensajes y archivos de WhatsApp) */
 #ctcb-whatsapp-composer-footer #ctcb-wc-status-message {
     flex-grow: 1;
     text-align: left;
-    margin: 0 10px 0 0;
+    margin: 0; 
     font-size: 0.85em;
     min-height: 1.2em;
     display: flex;
@@ -703,7 +710,7 @@
 }
 
 
-/* BOTÓN FLOTANTE DIALPAD */
+/* Botón flotante DialPad (Azul abajo a la derecha de la pantalla) */
 #ctcb-open-dialpad-button {
     position: fixed;
     bottom: 20px;

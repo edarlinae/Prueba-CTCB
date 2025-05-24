@@ -11,9 +11,21 @@
         <h1 id="mainTitle">Configuración</h1>
         <div id="main-menu">
             <button class="menu-item" data-section="urls-setup">URLs SETUP</button>
-            <button class="menu-item" data-section="voz-setup">VOZ SETUP</button>
-            <button class="menu-item" data-section="whatsapp-setup">WHATSAPP SETUP</button>
-             </div>
+            <button class="menu-item menu-item-with-switch" data-section="voz-setup">
+                VOZ SETUP
+                <label class="ctcb-toggle-switch">
+                    <input type="checkbox" id="enable_voz_api" name="enable_voz_api">
+                    <span class="slider"></span>
+                </label>
+            </button>
+            <button class="menu-item menu-item-with-switch" data-section="whatsapp-setup">
+                WHATSAPP SETUP
+                 <label class="ctcb-toggle-switch">
+                    <input type="checkbox" id="enable_whatsapp_api" name="enable_whatsapp_api">
+                    <span class="slider"></span>
+                </label>
+            </button>
+        </div>
 
         <form id="apiSettingsForm">
             <div id="urls-setup-section" class="config-section hidden">
