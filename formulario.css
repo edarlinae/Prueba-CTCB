@@ -107,7 +107,6 @@ h2 {
 .api-selection .radio-group label.block-label {
     display: block;
     margin-bottom: 6px;
-    vertical-align: top;
     margin-right: 0;
 }
 .api-selection .radio-group {
@@ -261,10 +260,6 @@ h2 {
 .menu-item:hover {
     background-color: #4a4a4c;
     border-color: #5a5a5c;
-}
-
-.menu-item-with-switch {
-    
 }
 
 .menu-item:not(.menu-item-with-switch) .ctcb-toggle-switch {

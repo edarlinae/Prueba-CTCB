@@ -527,7 +527,6 @@ function showWhatsAppComposer(phoneNumber) {
                             fileReader.readAsDataURL(selectedFile);
                         });
 
-                        console.log("[CTCBi] File read as Data URL:", fileData ? fileData.substring(0, 50) + '...' : 'null'); // Log parcial para no llenar consola
                     } catch (e) {
                         console.error('[CTCBi] Error reading file:', e);
                         if (statusMessageElement) { statusMessageElement.textContent = "Error al leer el archivo."; statusMessageElement.className = 'error'; } else alert("Error al leer el archivo.");
@@ -563,7 +562,6 @@ function showWhatsAppComposer(phoneNumber) {
                         fileType: selectedFile ? selectedFile.type : null
                     };
 
-                    console.log("[CTCBi] Sending WhatsApp payload:", payload);
 
                     chrome.runtime.sendMessage({ action: "sendWhatsAppViaAPI", payload: payload }, response => {
                         sendBtn.disabled = false; sendBtn.textContent = "Enviar"; 

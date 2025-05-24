@@ -176,7 +176,7 @@ function loadOptions() {
         const keysToGet = [
             'ctcb_domain', 'ctcb_id', 'ctcb_token', 'ctcb_userId', 'ctcb_apiType',
             'ctcb_showFloatingButton',
-            'ctcb_whatsapp_domain', 'ctcb_whatsapp_id', 'ctcb_whatsapp_token', 'ctcb_whatsapp_origen', // <- Asegurarse de obtener la clave correcta para WA ID
+            'ctcb_whatsapp_domain', 'ctcb_whatsapp_id', 'ctcb_whatsapp_token', 'ctcb_whatsapp_origen', 
             'ctcb_urlList',
             'ctcb_enableVoz', 'ctcb_enableWhatsapp'
         ];
@@ -185,7 +185,7 @@ function loadOptions() {
             if (chrome.runtime.lastError) { console.error('[CTCBi Form] Error loading options:', chrome.runtime.lastError.message); const status = document.getElementById('statusMessage'); if (status) { status.textContent = 'Error al cargar configuraciones.'; status.className = 'error';} applyDefaultOptionsToForm(); return; }
 
             const domainInput = document.getElementById('domain'); if (domainInput && items.ctcb_domain !== undefined) domainInput.value = items.ctcb_domain;
-            const idInput = document.getElementById('id'); if (idInput && items.ctcb_id !== undefined) idInput.value = items.ctcb_id; // <- Carga el ID de Voz
+            const idInput = document.getElementById('id'); if (idInput && items.ctcb_id !== undefined) idInput.value = items.ctcb_id;
             const tokenInput = document.getElementById('token'); if (tokenInput && items.ctcb_token !== undefined) tokenInput.value = items.ctcb_token;
             const userIdInput = document.getElementById('user_id'); if (userIdInput && items.ctcb_userId !== undefined) userIdInput.value = items.ctcb_userId;
 

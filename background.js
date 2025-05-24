@@ -71,7 +71,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         chrome.storage.sync.get(configKeysWA, function(items) {
             if (chrome.runtime.lastError) { console.error('[CTCBi SW] Error al cargar config de WhatsApp en SW:', chrome.runtime.lastError.message); sendResponse({ success: false, error: 'Error al cargar config de WhatsApp en background.' }); return; }
             const { ctcb_whatsapp_domain, ctcb_whatsapp_id, ctcb_whatsapp_token } = items;
-            if (!ctcb_whatsapp_domain || !ctcb_whatsapp_id || !ctcb_whatsapp_token || !origen || !destino || (mensaje === undefined && !file)) { console.warn('[CTCBi SW] Faltan datos para enviar WhatsApp vía API:', { /* ... */ }); sendResponse({ success: false, error: 'Faltan datos de configuración de WhatsApp o del mensaje/archivo.' }); return; }
+            if (!ctcb_whatsapp_domain || !ctcb_whatsapp_id || !ctcb_whatsapp_token || !origen || !destino || (mensaje === undefined && !file)) { console.warn('[CTCBi SW] Faltan datos para enviar WhatsApp vía API:', { }); sendResponse({ success: false, error: 'Faltan datos de configuración de WhatsApp o del mensaje/archivo.' }); return; }
             let domainWA = ctcb_whatsapp_domain.trim();
             let domainWithProtocol = domainWA;
             if (!domainWithProtocol.startsWith('http://') && !domainWithProtocol.startsWith('https://')) { domainWithProtocol = 'https://' + domainWithProtocol; }
@@ -111,7 +111,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                         "blob": base64Data
                     }
                 };
-                console.log("[CTCBi SW] Preparing JSON payload CON archivo (mensaje con espacio si es necesario).");
+               
             } else {
                 
                 bodyPayload = {
@@ -119,11 +119,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     "destino": destino.replace(/\D/g, ''),
                     "mensaje": mensaje,
                 };
-                console.log("[CTCBi SW] Preparing JSON payload para SOLO texto.");
             }
 
             fetchOptions.body = JSON.stringify(bodyPayload);
-            console.log("[CTCBi SW] Sending JSON payload to URL:", endpointUrl, ". Body (partial):", fetchOptions.body.substring(0, 500) + (fetchOptions.body.length > 500 ? '...' : ''));
 
             fetch(endpointUrl, fetchOptions)
                 .then(response => {
@@ -133,14 +131,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                             console.error(`[CTCBi SW] Request Body (JSON):`, fetchOptions.body);
                             console.error(`[CTCBi SW] Error Body Text:`, text);
                             let errorDetail = text.substring(0, 150);
-                            try { const errorJson = JSON.parse(text); if (errorJson && errorJson.msg) errorDetail = errorJson.msg; else if (errorJson && errorJson.error) errorDetail = errorJson.error; else if (errorJson) errorDetail = JSON.stringify(errorJson).substring(0, 150); } catch (e) { /* no es JSON */ }
+                            try { const errorJson = JSON.parse(text); if (errorJson && errorJson.msg) errorDetail = errorJson.msg; else if (errorJson && errorJson.error) errorDetail = errorJson.error; else if (errorJson) errorDetail = JSON.stringify(errorJson).substring(0, 150); } catch (e) { }
                             throw new Error(`Error API WhatsApp: ${response.status} ${response.statusText}. Det: ${errorDetail}`);
                         });
                     }
                     return response.json().catch(() => response.text());
                 })
                 .then(data => {
-                    console.log("[CTCBi SW] WhatsApp API response data (processed):", data);
                     if (typeof data === 'object' && data !== null && data.status === 0) {
                         sendResponse({ success: true, data: data });
                     } else {
@@ -159,6 +156,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 chrome.runtime.onInstalled.addListener(details => {
-    if (details.reason === "install") { console.log("[CTCBi SW] Extensión instalada."); }
-    else if (details.reason === "update") { console.log(`[CTCBi SW] Extensión actualizada desde la versión ${details.previousVersion}.`); }
+    if (details.reason === "install") { 
+    }
+    else if (details.reason === "update") { 
+    }
 });
